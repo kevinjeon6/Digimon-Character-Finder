@@ -10,7 +10,6 @@
 		74B8CD4A29EB35E600F0AD40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8CD4929EB35E600F0AD40 /* AppDelegate.swift */; };
 		74B8CD4C29EB35E600F0AD40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8CD4B29EB35E600F0AD40 /* SceneDelegate.swift */; };
 		74B8CD4E29EB35E600F0AD40 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8CD4D29EB35E600F0AD40 /* ViewController.swift */; };
-		74B8CD5129EB35E600F0AD40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B8CD4F29EB35E600F0AD40 /* Main.storyboard */; };
 		74B8CD5429EB35E600F0AD40 /* DigimonProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 74B8CD5229EB35E600F0AD40 /* DigimonProject.xcdatamodeld */; };
 		74B8CD5629EB35E700F0AD40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74B8CD5529EB35E700F0AD40 /* Assets.xcassets */; };
 		74B8CD5929EB35E700F0AD40 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B8CD5729EB35E700F0AD40 /* LaunchScreen.storyboard */; };
@@ -21,7 +20,6 @@
 		74B8CD4929EB35E600F0AD40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74B8CD4B29EB35E600F0AD40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		74B8CD4D29EB35E600F0AD40 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		74B8CD5029EB35E600F0AD40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		74B8CD5329EB35E600F0AD40 /* DigimonProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DigimonProject.xcdatamodel; sourceTree = "<group>"; };
 		74B8CD5529EB35E700F0AD40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74B8CD5829EB35E700F0AD40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,7 +59,6 @@
 				74B8CD4929EB35E600F0AD40 /* AppDelegate.swift */,
 				74B8CD4B29EB35E600F0AD40 /* SceneDelegate.swift */,
 				74B8CD4D29EB35E600F0AD40 /* ViewController.swift */,
-				74B8CD4F29EB35E600F0AD40 /* Main.storyboard */,
 				74B8CD5529EB35E700F0AD40 /* Assets.xcassets */,
 				74B8CD5729EB35E700F0AD40 /* LaunchScreen.storyboard */,
 				74B8CD5A29EB35E700F0AD40 /* Info.plist */,
@@ -130,7 +127,6 @@
 			files = (
 				74B8CD5929EB35E700F0AD40 /* LaunchScreen.storyboard in Resources */,
 				74B8CD5629EB35E700F0AD40 /* Assets.xcassets in Resources */,
-				74B8CD5129EB35E600F0AD40 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,14 +147,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		74B8CD4F29EB35E600F0AD40 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				74B8CD5029EB35E600F0AD40 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		74B8CD5729EB35E700F0AD40 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -296,7 +284,6 @@
 				INFOPLIST_FILE = DigimonProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -324,7 +311,6 @@
 				INFOPLIST_FILE = DigimonProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
