@@ -8,6 +8,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    //Create DigimonViewModel object/instance and assign it to the variable viewModel
+    var viewModel = DigimonViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
