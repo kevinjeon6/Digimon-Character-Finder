@@ -62,8 +62,8 @@
 			children = (
 				74B8CD4929EB35E600F0AD40 /* AppDelegate.swift */,
 				74B8CD4B29EB35E600F0AD40 /* SceneDelegate.swift */,
-				74B8CD6029EB3E0500F0AD40 /* Digimon.swift */,
-				74B8CD6229EB40B500F0AD40 /*  DigimonViewModel.swift */,
+				74BDFEBF29EB56A200DA0AEE /* Model */,
+				74BDFEBE29EB569800DA0AEE /* ViewModel */,
 				74B8CD4D29EB35E600F0AD40 /* ViewController.swift */,
 				74B8CD5529EB35E700F0AD40 /* Assets.xcassets */,
 				74B8CD5729EB35E700F0AD40 /* LaunchScreen.storyboard */,
@@ -71,6 +71,22 @@
 				74B8CD5229EB35E600F0AD40 /* DigimonProject.xcdatamodeld */,
 			);
 			path = DigimonProject;
+			sourceTree = "<group>";
+		};
+		74BDFEBE29EB569800DA0AEE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				74B8CD6229EB40B500F0AD40 /*  DigimonViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		74BDFEBF29EB56A200DA0AEE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				74B8CD6029EB3E0500F0AD40 /* Digimon.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
