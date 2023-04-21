@@ -15,15 +15,16 @@ protocol DigimonViewModelProtocol {
 
 
 //Using Swift Concurrency in UIKit
-@MainActor //MainActor Any UI updates gets placed on the main thread. But any processing such as fetching data is still on the background thread.
+
 class DigimonViewModel {
     
     // MARK: - Properties
-    var characters: Digimon?
+    var characters =  [Digimon]()
     
     //Declare delegate property in view model
     var delegate: DigimonViewModelProtocol?
     
+    @MainActor //MainActor Any UI updates gets placed on the main thread. But any processing such as fetching data is still on the background thread.
     func getDigimonData() {
         
         
@@ -45,7 +46,7 @@ class DigimonViewModel {
                 
                 
                 let decoder = JSONDecoder()
-                self?.characters = try decoder.decode(Digimon.self, from: data)
+                self?.characters = try decoder.decode([Digimon].self, from: data)
                 self?.delegate?.didFinish()
             } catch {
                 self?.delegate?.didFail(error: error)

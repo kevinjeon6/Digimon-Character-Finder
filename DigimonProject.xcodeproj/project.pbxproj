@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74AC6F5529ECC06000E8F9D6 /* DigimonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC6F5429ECC06000E8F9D6 /* DigimonCell.swift */; };
 		74B8CD4A29EB35E600F0AD40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8CD4929EB35E600F0AD40 /* AppDelegate.swift */; };
 		74B8CD4C29EB35E600F0AD40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8CD4B29EB35E600F0AD40 /* SceneDelegate.swift */; };
 		74B8CD4E29EB35E600F0AD40 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8CD4D29EB35E600F0AD40 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		74AC6F5429ECC06000E8F9D6 /* DigimonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigimonCell.swift; sourceTree = "<group>"; };
 		74B8CD4629EB35E600F0AD40 /* DigimonProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigimonProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B8CD4929EB35E600F0AD40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74B8CD4B29EB35E600F0AD40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		74AC6F4C29ECA4F600E8F9D6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				74B8CD4D29EB35E600F0AD40 /* ViewController.swift */,
+				74AC6F5429ECC06000E8F9D6 /* DigimonCell.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		74B8CD3D29EB35E600F0AD40 = {
 			isa = PBXGroup;
 			children = (
@@ -64,7 +75,7 @@
 				74B8CD4B29EB35E600F0AD40 /* SceneDelegate.swift */,
 				74BDFEBF29EB56A200DA0AEE /* Model */,
 				74BDFEBE29EB569800DA0AEE /* ViewModel */,
-				74B8CD4D29EB35E600F0AD40 /* ViewController.swift */,
+				74AC6F4C29ECA4F600E8F9D6 /* Controller */,
 				74B8CD5529EB35E700F0AD40 /* Assets.xcassets */,
 				74B8CD5729EB35E700F0AD40 /* LaunchScreen.storyboard */,
 				74B8CD5A29EB35E700F0AD40 /* Info.plist */,
@@ -164,6 +175,7 @@
 				74B8CD4A29EB35E600F0AD40 /* AppDelegate.swift in Sources */,
 				74B8CD6329EB40B500F0AD40 /*  DigimonViewModel.swift in Sources */,
 				74B8CD4C29EB35E600F0AD40 /* SceneDelegate.swift in Sources */,
+				74AC6F5529ECC06000E8F9D6 /* DigimonCell.swift in Sources */,
 				74B8CD6129EB3E0500F0AD40 /* Digimon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
