@@ -18,10 +18,10 @@ class ViewController: UIViewController {
         tableView.backgroundColor = .systemBackground
         tableView.allowsSelection = true
         tableView.register(DigimonCell.self, forCellReuseIdentifier: DigimonCell.identifier)
-        
-        
         return tableView
     }()
+    
+    private let searchController = UISearchController(searchResultsController: nil)
     
     
     
@@ -41,10 +41,10 @@ class ViewController: UIViewController {
         viewModel.delegate = self
         //Get the articles from the view model
         viewModel.getDigimonData()
-        
         configureTableView()
         setTableViewDelegates()
         configNavBar()
+        configSearchBar()
 
 
     }
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
     
     
     func configNavBar() {
-let appearance = UINavigationBarAppearance()
+        let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .mainOrange()
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
@@ -106,6 +106,23 @@ let appearance = UINavigationBarAppearance()
     }
     
     
+    func configSearchBar() {
+        self.searchController.searchResultsUpdater = self
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        
+        //This is what will be displayed in the search bar
+        self.searchController.searchBar.placeholder = "Search Digimon"
+        self.searchController.searchBar.searchTextField.backgroundColor = .white
+        self.navigationItem.searchController = searchController
+        self.definesPresentationContext = false
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        
+        
+    }
+    
+    
+    
     // MARK: - Selectors
     
     @objc func showSearch() {
@@ -119,6 +136,7 @@ let appearance = UINavigationBarAppearance()
     }
     
 }
+
 
 
 
@@ -146,10 +164,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 112
     }
-    
-    
-    
-    
 }
 
 
@@ -170,3 +184,11 @@ extension ViewController: DigimonViewModelProtocol {
     }
 }
 
+
+
+// MARK: - Extension for Search Controller Functions
+extension ViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        print(searchController.searchBar.text)
+    }
+}

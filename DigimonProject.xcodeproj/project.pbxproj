@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		74331F1229F445C000411EC0 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74331F1129F445C000411EC0 /* CustomSegmentedControl.swift */; };
 		74331F1429F5E37900411EC0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74331F1329F5E37900411EC0 /* Extensions.swift */; };
 		74AC6F5529ECC06000E8F9D6 /* DigimonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC6F5429ECC06000E8F9D6 /* DigimonCell.swift */; };
 		74B8CD4A29EB35E600F0AD40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8CD4929EB35E600F0AD40 /* AppDelegate.swift */; };
@@ -21,7 +20,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		74331F1129F445C000411EC0 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		74331F1329F5E37900411EC0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		74AC6F5429ECC06000E8F9D6 /* DigimonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigimonCell.swift; sourceTree = "<group>"; };
 		74B8CD4629EB35E600F0AD40 /* DigimonProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigimonProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,13 +45,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7450F1C029FA0CDF0019638D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				74331F1329F5E37900411EC0 /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		74AC6F4C29ECA4F600E8F9D6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				74B8CD4D29EB35E600F0AD40 /* ViewController.swift */,
 				74AC6F5429ECC06000E8F9D6 /* DigimonCell.swift */,
-				74331F1129F445C000411EC0 /* CustomSegmentedControl.swift */,
-				74331F1329F5E37900411EC0 /* Extensions.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -79,6 +83,7 @@
 			children = (
 				74B8CD4929EB35E600F0AD40 /* AppDelegate.swift */,
 				74B8CD4B29EB35E600F0AD40 /* SceneDelegate.swift */,
+				7450F1C029FA0CDF0019638D /* Helpers */,
 				74BDFEBF29EB56A200DA0AEE /* Model */,
 				74BDFEBE29EB569800DA0AEE /* ViewModel */,
 				74AC6F4C29ECA4F600E8F9D6 /* Controller */,
@@ -184,7 +189,6 @@
 				74B8CD4C29EB35E600F0AD40 /* SceneDelegate.swift in Sources */,
 				74AC6F5529ECC06000E8F9D6 /* DigimonCell.swift in Sources */,
 				74B8CD6129EB3E0500F0AD40 /* Digimon.swift in Sources */,
-				74331F1229F445C000411EC0 /* CustomSegmentedControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
