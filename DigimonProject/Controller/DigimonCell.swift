@@ -32,6 +32,16 @@ class DigimonCell: UITableViewCell {
         return label
     }()
     
+    
+    private var digimonLevelLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .label
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 15, weight: .thin)
+        label.text = "Digimon level goes here"
+        label.minimumScaleFactor = 0.1
+        return label
+    }()
    
     // MARK: - Init
     
@@ -53,6 +63,7 @@ class DigimonCell: UITableViewCell {
     // convert the URL string to an actual image object and set it to the UIImageView instance in the cell.
     func set(imageUrlString: String, label: String, level: String) {
         digimonTitleLabel.text = label
+        digimonLevelLabel.text = level
         
         guard let imageUrl = URL(string: imageUrlString) else {
             return
@@ -73,9 +84,11 @@ class DigimonCell: UITableViewCell {
     private func setupUI() {
         contentView.addSubview(digimonImageView)
         contentView.addSubview(digimonTitleLabel)
+        contentView.addSubview(digimonLevelLabel)
 
         digimonImageView.translatesAutoresizingMaskIntoConstraints = false
         digimonTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        digimonLevelLabel.translatesAutoresizingMaskIntoConstraints = false
         
         
         NSLayoutConstraint.activate([
@@ -91,6 +104,11 @@ class DigimonCell: UITableViewCell {
             digimonTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             digimonTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             digimonTitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            digimonLevelLabel.leadingAnchor.constraint(equalTo: digimonImageView.trailingAnchor, constant: 16),
+            digimonLevelLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+            digimonLevelLabel.topAnchor.constraint(equalTo: digimonTitleLabel.topAnchor, constant: 45),
+            digimonLevelLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
             
             

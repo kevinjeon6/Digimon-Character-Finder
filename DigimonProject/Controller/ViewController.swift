@@ -42,8 +42,10 @@ class ViewController: UIViewController {
         //Get the articles from the view model
         viewModel.getDigimonData()
         
-       configureTableView()
+        configureTableView()
         setTableViewDelegates()
+        configNavBar()
+
 
     }
     
@@ -75,8 +77,47 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
+    
+    
+    
+    func configNavBar() {
+let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .mainOrange()
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.barStyle = .black //bar style gives us the white status bar/white text look
+        navigationController?.navigationBar.isTranslucent = false
+        
+        navigationItem.title = "Digimon"
+        let search = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearch))
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
+        
+        
 
-
+        
+        //The array for rightBarButtonItems reads from outside to middle. Meaning the add is the closest to the edge of the phone
+        navigationItem.rightBarButtonItems = [add, search]
+      
+       
+    }
+    
+    
+    // MARK: - Selectors
+    
+    @objc func showSearch() {
+        //Do stuff for search bar
+        print("searching for characters")
+    }
+    
+    @objc func addTapped() {
+        //Do stuff to add to favorites
+        print("Add to favorites")
+    }
+    
 }
 
 
