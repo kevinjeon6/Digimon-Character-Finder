@@ -13,22 +13,44 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        
+ 
         // MARK: - Start programmatic UI. Set up Scene
         //Replace underscore with a variable name. Below is the initial set up to get rid of storyboard and the intial view controller to set up
         guard let windowScene = (scene as? UIWindowScene) else { return }
         //Need to capture the windowScene which is the area on the screen which we can add stuff to it.
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        //Put are ViewController within a UI navigation controller. Will be able to put your view inside of as a contain and add buttons and navbar, etc.
-        let navController = UINavigationController(rootViewController: ViewController())
 //        Need to set the root view controller for our window
-        window?.rootViewController = navController
+        window?.rootViewController = createTabBar()
         //Tell the application to make the window visible on the screen
         window?.makeKeyAndVisible()
+    }
+    
+    
+    func createSearchNavigationController() -> UINavigationController {
+        let vc = ViewController()
+        vc.tabBarItem = UITabBarItem(title: "Digimon", image: UIImage(systemName: "list.dash"), tag: 0)
+        
+        //Put are ViewController within a UI navigation controller. Will be able to put your view inside of as a contain and add buttons and navbar, etc.
+        return UINavigationController(rootViewController: vc)
+        
+    }
+    
+    func createFavoritesNagivationController() -> UINavigationController {
+        let favController = FavoritesListViewController()
+        favController.navigationItem.title = "Favorites"
+        favController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+        
+        return UINavigationController(rootViewController: favController)
+    }
+    
+    func createTabBar() -> UITabBarController {
+        let tabBar = UITabBarController()
+        UITabBar.appearance().tintColor = .systemBlue
+        //Need to put the View Controllers into the Tab bar. Which is an array of View Controllers
+        tabBar.viewControllers = [createSearchNavigationController(), createFavoritesNagivationController()]
+        
+        return tabBar
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

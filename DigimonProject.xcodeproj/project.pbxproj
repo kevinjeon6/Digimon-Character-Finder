@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		74331F1429F5E37900411EC0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74331F1329F5E37900411EC0 /* Extensions.swift */; };
+		7450F1C429FC72280019638D /* FavoritesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7450F1C329FC72280019638D /* FavoritesListViewController.swift */; };
 		74AC6F5529ECC06000E8F9D6 /* DigimonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AC6F5429ECC06000E8F9D6 /* DigimonCell.swift */; };
 		74B8CD4A29EB35E600F0AD40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8CD4929EB35E600F0AD40 /* AppDelegate.swift */; };
 		74B8CD4C29EB35E600F0AD40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8CD4B29EB35E600F0AD40 /* SceneDelegate.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		74331F1329F5E37900411EC0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7450F1C329FC72280019638D /* FavoritesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListViewController.swift; sourceTree = "<group>"; };
 		74AC6F5429ECC06000E8F9D6 /* DigimonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigimonCell.swift; sourceTree = "<group>"; };
 		74B8CD4629EB35E600F0AD40 /* DigimonProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigimonProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B8CD4929EB35E600F0AD40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				74B8CD4D29EB35E600F0AD40 /* ViewController.swift */,
+				7450F1C329FC72280019638D /* FavoritesListViewController.swift */,
 				74AC6F5429ECC06000E8F9D6 /* DigimonCell.swift */,
 			);
 			path = Controller;
@@ -181,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7450F1C429FC72280019638D /* FavoritesListViewController.swift in Sources */,
 				74B8CD4E29EB35E600F0AD40 /* ViewController.swift in Sources */,
 				74331F1429F5E37900411EC0 /* Extensions.swift in Sources */,
 				74B8CD5429EB35E600F0AD40 /* DigimonProject.xcdatamodeld in Sources */,

@@ -91,18 +91,7 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.barStyle = .black //bar style gives us the white status bar/white text look
         navigationController?.navigationBar.isTranslucent = false
-        
         navigationItem.title = "Digimon"
-        let search = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showSearch))
-        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
-        
-        
-
-        
-        //The array for rightBarButtonItems reads from outside to middle. Meaning the add is the closest to the edge of the phone
-        navigationItem.rightBarButtonItems = [add, search]
-      
-       
     }
     
     
@@ -134,6 +123,11 @@ class ViewController: UIViewController {
     @objc func addTapped() {
         //Do stuff to add to favorites
         print("Add to favorites")
+    }
+    
+    @objc func markAsFavorite(cell: UITableViewCell) {
+        print("This is my favorite Digimon")
+
     }
     
 }
