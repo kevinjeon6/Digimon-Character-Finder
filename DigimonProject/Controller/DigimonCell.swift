@@ -42,6 +42,22 @@ class DigimonCell: UITableViewCell {
         label.minimumScaleFactor = 0.1
         return label
     }()
+    
+    
+    //Making a star button to favorite a Digimon. Can be placed in cellForRowAt or in the Cell
+    private var starButton: UIButton = {
+        let starButton = UIButton(type: .system)
+        starButton.setImage(UIImage(systemName: "star"), for: .normal)
+        starButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+
+        starButton.addTarget(self, action: #selector(markAsFavorite), for: .touchUpInside)
+        return starButton
+    }()
+
+    @objc func markAsFavorite() {
+        print("This is my favorite Digimon")
+    }
+    
    
     // MARK: - Init
     
@@ -51,6 +67,11 @@ class DigimonCell: UITableViewCell {
     
         //Now views are added to the subview
         setupUI()
+        
+        
+        //AccessoryView is the view on the right hand side of the cell
+        accessoryView = starButton
+        
         
     }
     

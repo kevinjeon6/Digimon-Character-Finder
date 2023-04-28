@@ -193,6 +193,7 @@ extension ViewController: DigimonViewModelProtocol {
 
 
 // MARK: - Extension for Search Controller Functions
+//UISearchResults updates the search results based on the input into the search bar
 extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         self.viewModel.updateSearchController(searchBarText: searchController.searchBar.text)
