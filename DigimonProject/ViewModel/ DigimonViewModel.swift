@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 //To create a delegate you need to create a protocol
 protocol DigimonViewModelProtocol {
@@ -20,6 +21,8 @@ class DigimonViewModel {
     
     // MARK: - Properties
     var characters =  [Digimon]()
+    
+    var filteredDigimon = [Digimon]()
     
     //Declare delegate property in view model
     var delegate: DigimonViewModelProtocol?
@@ -54,6 +57,40 @@ class DigimonViewModel {
         }
         
         self.delegate?.didFinish()
+    }
+    
+}
+
+
+
+// MARK: - Extension for Search functions
+extension DigimonViewModel {
+    
+    public func inSearchMode(_ searchController: UISearchController) -> Bool {
+        let isActive = searchController.isActive
+        let searchText = searchController.searchBar.text ?? ""
+        
+        //isEmpty returns true if there is nothing. The ! reverses the condition
+        return isActive && !searchText.isEmpty
+        
+    }
+    
+    
+    //The parameter is search bar text and will be passed into the scope of the function
+    public func updateSearchController(searchBarText: String?) {
+        self.filteredDigimon = characters
+        
+        //Filtering the Filtered Digimon characters
+        
+        if let searchBarText = searchBarText?.lowercased() {
+            guard !searchBarText.isEmpty else { return }
+            
+            
+            self.filteredDigimon = self.filteredDigimon.filter({$0.name.localizedCaseInsensitiveContains(searchBarText)})
+        }
+        
+        
+        
     }
     
 }

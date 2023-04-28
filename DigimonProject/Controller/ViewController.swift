@@ -113,6 +113,7 @@ class ViewController: UIViewController {
         
         //This is what will be displayed in the search bar
         self.searchController.searchBar.placeholder = "Search Digimon"
+        //The color of the background of the textfield
         self.searchController.searchBar.searchTextField.backgroundColor = .white
         self.navigationItem.searchController = searchController
         self.definesPresentationContext = false
@@ -147,7 +148,11 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //How many rows do I want to show
-        return viewModel.characters.count
+        let inSearchMode = viewModel.inSearchMode(searchController)
+        
+        
+        //Ternary operator. WTF - What is the condition ? True : False
+        return inSearchMode ? viewModel.filteredDigimon.count : viewModel.characters.count
         
     }
     
@@ -155,7 +160,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     //for cellForRowAt is where we choose which class we want to use. Set up configuration like images, etc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DigimonCell.identifier, for: indexPath) as? DigimonCell else { fatalError("tableview could not dequeue digimoncell in viewcontroller")}
-        let digimon = viewModel.characters[indexPath.row]
+        let inSearchMode = viewModel.inSearchMode(searchController)
+        let digimon = inSearchMode ? viewModel.filteredDigimon[indexPath.row] : viewModel.characters[indexPath.row]
         cell.set(imageUrlString: digimon.img, label: digimon.name, level: digimon.level)
 
         return cell
@@ -189,6 +195,9 @@ extension ViewController: DigimonViewModelProtocol {
 // MARK: - Extension for Search Controller Functions
 extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        print(searchController.searchBar.text)
+        self.viewModel.updateSearchController(searchBarText: searchController.searchBar.text)
+        
+        //Refreshing the view with the updated search text
+        tableView.reloadData()
     }
 }
