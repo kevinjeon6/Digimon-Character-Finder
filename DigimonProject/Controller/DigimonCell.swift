@@ -52,14 +52,13 @@ class DigimonCell: UITableViewCell {
         starButton.setImage(UIImage(systemName: "star"), for: .normal)
         starButton.setImage(UIImage(systemName: "star.fill")?.withTintColor(.orange, renderingMode: .alwaysOriginal), for: .selected)
         starButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-
-   
-        
         starButton.addTarget(self, action: #selector(markAsFavorite), for: .touchUpInside)
         return starButton
     }()
 
     @objc func markAsFavorite(sender: UIButton) {
+        
+        //isSelected is defaulted as NO. ! reverses the condition. Meaning that sender.isSelected is true
         sender.isSelected = !sender.isSelected //Toggle the button state
         print("This is my favorite Digimon")
         
@@ -120,23 +119,22 @@ class DigimonCell: UITableViewCell {
         
         
         NSLayoutConstraint.activate([
-            digimonImageView.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor),
-            digimonImageView.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor),
-            digimonImageView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            digimonImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            digimonImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+            digimonImageView.heightAnchor.constraint(equalToConstant: 80),
+            digimonImageView.widthAnchor.constraint(equalToConstant: 80),
+
             
-//            digimonImageView.heightAnchor.constraint(equalToConstant: 90),
-            digimonImageView.widthAnchor.constraint(equalToConstant: 90),
+            digimonTitleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            digimonTitleLabel.leadingAnchor.constraint(equalTo: digimonImageView.trailingAnchor, constant: 14),
+            digimonTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -14),
+            digimonTitleLabel.heightAnchor.constraint(equalToConstant: 40),
+ 
             
-            
-            digimonTitleLabel.leadingAnchor.constraint(equalTo: digimonImageView.trailingAnchor, constant: 16),
-            digimonTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            digimonTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            digimonTitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
-            digimonLevelLabel.leadingAnchor.constraint(equalTo: digimonImageView.trailingAnchor, constant: 16),
-            digimonLevelLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            digimonLevelLabel.topAnchor.constraint(equalTo: digimonTitleLabel.topAnchor, constant: 45),
-            digimonLevelLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            digimonLevelLabel.leadingAnchor.constraint(equalTo: digimonImageView.trailingAnchor, constant: 14),
+            digimonLevelLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -14),
+            digimonLevelLabel.topAnchor.constraint(equalTo: digimonTitleLabel.bottomAnchor),
+
 
             
             
