@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .systemBackground
-        tableView.allowsSelection = true
         tableView.register(DigimonCell.self, forCellReuseIdentifier: DigimonCell.identifier)
         return tableView
     }()
@@ -162,7 +161,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 112
+        return 110
     }
 }
 
