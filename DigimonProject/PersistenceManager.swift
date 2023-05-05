@@ -41,6 +41,22 @@ enum PersistenceManager {
         }
     }
     
-   
+    // MARK: - Save Favorites
+    
+    //Returning an optional error. Returning nil if it's successful
+    static func saveFavorites(favorites: [Digimon]) -> Error? {
+        do {
+            let encoder = JSONEncoder()
+            let encodedFavorites = try encoder.encode(favorites)
+            
+            //Saving to user defaults
+            defaults.set(encodedFavorites, forKey: Keys.favorites)
+            return nil //Returning nil because there is no Error
+            
+        }catch {
+            fatalError("Unable to favorite")
+        }
+    }
+    
     
 }
