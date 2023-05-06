@@ -8,6 +8,10 @@
 import Foundation
 
 
+enum PersistenceActionType {
+    case add
+    case remove
+}
 
 
 enum Keys {
@@ -58,5 +62,35 @@ enum PersistenceManager {
         }
     }
     
-    
+    //Favoriting the one individual
+    //Completion handler is used for the possibility of errors when adding and removing through the encoder
+    static func updateWith(favorite: Digimon, actionType: PersistenceActionType, completed: @escaping (Error?) -> Void) {
+        //Need to reach in the user defaults and retrieve the array
+        retrieveFavorites { result in
+            switch result {
+            case .success(var favorites):
+                //Success on adding a favorite
+        
+                switch actionType {
+                case .add:
+                    //Don't add a favorite if it already exsists
+                    //!retrieved means that the retreivedFavorites does not contain
+                    guard !favorites.contains(favorite) else {
+                        completed("Already in favorites" as? Error)
+                        return
+                    }
+                    favorites.append(favorite)
+                case .remove:
+                    favorites.removeAll { $0.name == favorite.name && $0.img == favorite.img && $0.level == favorite.level} //Shorthand syntax $0 is each item as it iterates through
+                }
+                
+                completed(saveFavorites(favorites: favorites))
+                
+             
+            case .failure(let error):
+                //If things fail. Pass back the error
+               completed(error)
+            }
+        }
+    }
 }
