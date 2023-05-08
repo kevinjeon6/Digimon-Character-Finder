@@ -43,26 +43,39 @@ class DigimonCell: UITableViewCell {
         return label
     }()
     
-    
     //Making a star button to favorite a Digimon. Can be placed in cellForRowAt or in the Cell
-    private var starButton: UIButton = {
-    
-        
-        let starButton = UIButton(type: .custom)
-        starButton.setImage(UIImage(systemName: "star"), for: .normal)
-        starButton.setImage(UIImage(systemName: "star.fill")?.withTintColor(.orange, renderingMode: .alwaysOriginal), for: .selected)
-        starButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        starButton.addTarget(self, action: #selector(markAsFavorite), for: .touchUpInside)
-        return starButton
-    }()
+//    private var starButton: UIButton = {
+//
+//
+//        let starButton = UIButton(type: .custom)
+//        starButton.setImage(UIImage(systemName: "star"), for: .normal)
+//        starButton.setImage(UIImage(systemName: "star.fill")?.withTintColor(.orange, renderingMode: .alwaysOriginal), for: .selected)
+//        starButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+//        starButton.addTarget(self, action: #selector(markAsFavorite), for: .touchUpInside)
+//        return starButton
+//    }()
 
-    @objc func markAsFavorite(sender: UIButton) {
-        
-        //isSelected is defaulted as NO. ! reverses the condition. Meaning that sender.isSelected is true
-        sender.isSelected = !sender.isSelected //Toggle the button state
-        print("This is my favorite Digimon")
-        
-    }
+//    @objc func markAsFavorite(sender: UIButton) {
+//
+//        //isSelected is defaulted as NO. ! reverses the condition. Meaning that sender.isSelected is true
+//        sender.isSelected = !sender.isSelected //Toggle the button state
+//        print("This is my favorite Digimon")
+//        addDigimonToFavorites(digimon: )
+//
+//
+//    }
+//
+//    func addDigimonToFavorites(digimon: Digimon) {
+//        //Need to append to the empty favorites
+//        var favorites = Digimon(name: digimon.name, img: digimon.img, level: digimon.level)
+//
+//        PersistenceManager.updateWith(favorite: favorites, actionType: .add) {
+//            [weak self] error in
+//            guard let self = self { return }
+//
+//
+//        }
+//    }
     
    
     // MARK: - Init
@@ -76,7 +89,7 @@ class DigimonCell: UITableViewCell {
         
         
         //AccessoryView is the view on the right hand side of the cell
-        accessoryView = starButton
+//        accessoryView = starButton
         
         
     }
@@ -86,15 +99,12 @@ class DigimonCell: UITableViewCell {
     }
     
     
-    
     // convert the URL string to an actual image object and set it to the UIImageView instance in the cell.
-    func set(imageUrlString: String, label: String, level: String) {
-        digimonTitleLabel.text = label
-        digimonLevelLabel.text = level
+    func set(digimon: Digimon) {
+        digimonTitleLabel.text = digimon.name
+        digimonLevelLabel.text = digimon.level
         
-        guard let imageUrl = URL(string: imageUrlString) else {
-            return
-        }
+        guard let imageUrl = URL(string: digimon.img) else { return }
         
         DispatchQueue.global().async {
             if let imageData = try? Data(contentsOf: imageUrl) {
@@ -106,7 +116,7 @@ class DigimonCell: UITableViewCell {
         }
     }
 
-    
+
     
     private func setupUI() {
         contentView.addSubview(digimonImageView)

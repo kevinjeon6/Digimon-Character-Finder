@@ -67,13 +67,21 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		748EBDBC2A056A73007ADE7F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				74AC6F5429ECC06000E8F9D6 /* DigimonCell.swift */,
+				7450F1C729FDB6D10019638D /* FavoriteCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		74AC6F4C29ECA4F600E8F9D6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				74B8CD4D29EB35E600F0AD40 /* ViewController.swift */,
 				7450F1C329FC72280019638D /* FavoritesListViewController.swift */,
-				74AC6F5429ECC06000E8F9D6 /* DigimonCell.swift */,
-				7450F1C729FDB6D10019638D /* FavoriteCell.swift */,
+				748EBDBC2A056A73007ADE7F /* Cells */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
