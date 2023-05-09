@@ -89,40 +89,6 @@ enum PersistenceManager {
 
 
 
-    //Favoriting the one individual
-    //Completion handler is used for the possibility of errors when adding and removing through the encoder
-    /*
-    static func updateWith(favorite: Digimon, actionType: PersistenceActionType, completed: @escaping (FavoriteError?) -> Void) {
-        //Need to reach in the user defaults and retrieve the array
-        retrieveFavorites { result in
-            switch result {
-                //Success on adding a favorite
-            case .success(var favorites):
-                switch actionType {
-                    //Don't add a favorite if it already exsists
-                    //!retrieved means that the retreivedFavorites does not contain
-                case .add:
-                    guard !favorites.contains(favorite) else {
-                        completed(.alreadyInFavorites)
-                    }
-                    
-                    favorites.append(favorite)
-                case .remove:
-                    favorites.removeAll { $0.name == favorite.name && $0.img == favorite.img && $0.level == favorite.level} //Shorthand syntax $0 is each item as it iterates through
-                }
-                
-                completed(saveFavorites(favorites: favorites))
-                
-                
-            case .failure(let error):
-                completed(error)
-            }
-        }
-    }
-     */
-
-
-
         
 
    

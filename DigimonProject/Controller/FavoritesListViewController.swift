@@ -21,7 +21,6 @@ class FavoritesListViewController: UIViewController {
         return tableView
     }()
 
-    private let emptyView = EmptyView(message: "You do not have any favorites yet")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,16 +30,7 @@ class FavoritesListViewController: UIViewController {
         //In a total different Navigation controller since tab bar has different navigation controllers for each tab. Need to customize the nav bar UI
         configFavoritesTableView()
         configNavBar()
-        
-        emptyView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(emptyView)
-        NSLayoutConstraint.activate([
-            emptyView.topAnchor.constraint(equalTo: view.topAnchor),
-            emptyView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            emptyView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            emptyView.rightAnchor.constraint(equalTo: view.rightAnchor),
-        ])
-        emptyView.isHidden = true
+
     }
     
     
@@ -84,9 +74,8 @@ class FavoritesListViewController: UIViewController {
         switch results {
         case .success(let favorites):
             if favorites.isEmpty {
-                emptyView.isHidden = false
+                showEmptyView(with: "You do not have any favorite Digimon added yet.\nFind your favorite Digimon!", in: view)
             } else {
-                emptyView.isHidden = true
                 self.favorites = favorites
                 DispatchQueue.main.async {
                     self.tableView.reloadData()

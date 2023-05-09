@@ -19,7 +19,7 @@ class EmptyView: UIView {
         emptyText.lineBreakMode = .byTruncatingTail
         emptyText.textAlignment = .center
         emptyText.numberOfLines = 3
-        emptyText.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+        emptyText.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         emptyText.translatesAutoresizingMaskIntoConstraints = false
         return emptyText
     }()
@@ -48,6 +48,8 @@ class EmptyView: UIView {
         super.init(frame: .zero)
         emptyTitleText.text = message
         configure()
+        configureMessageLabel()
+        configureLogoImage()
     }
     
     
@@ -63,19 +65,19 @@ class EmptyView: UIView {
     private func configureMessageLabel() {
         NSLayoutConstraint.activate([
             emptyTitleText.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -150), // -150 is shifting it UP from the center Y
-            emptyTitleText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
-            emptyTitleText.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
-            emptyTitleText.heightAnchor.constraint(equalToConstant: 200)
+            emptyTitleText.heightAnchor.constraint(equalToConstant: 200),
+            emptyTitleText.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            emptyTitleText.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
         
         ])
     }
     
     private func configureLogoImage() {
         NSLayoutConstraint.activate([
-            logoImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),
-            logoImageView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),
-            logoImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 170),
-            logoImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 40)
+            logoImageView.widthAnchor.constraint(equalToConstant: 250),
+            logoImageView.heightAnchor.constraint(equalToConstant: 250),
+            logoImageView.topAnchor.constraint(equalTo: emptyTitleText.bottomAnchor),
+            logoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
         ])
     }
 }
