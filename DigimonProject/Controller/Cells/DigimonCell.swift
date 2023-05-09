@@ -98,6 +98,9 @@ class DigimonCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        digimonImageView.image = UIImage(systemName: "x.circle")
+    }
     
     // convert the URL string to an actual image object and set it to the UIImageView instance in the cell.
     func set(digimon: Digimon) {
@@ -106,17 +109,23 @@ class DigimonCell: UITableViewCell {
         
         guard let imageUrl = URL(string: digimon.img) else { return }
         
+        imageContext += 1
+        let startingContext = imageContext
         DispatchQueue.global().async {
             if let imageData = try? Data(contentsOf: imageUrl) {
                 let image = UIImage(data: imageData)
-                DispatchQueue.main.async {
-                    self.digimonImageView.image = image
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    let currentContext = self.imageContext
+                    if currentContext == startingContext {
+                        self.digimonImageView.image = image
+                    }
                 }
             }
         }
     }
-
-
+    
+    private var imageContext: Int = 0
     
     private func setupUI() {
         contentView.addSubview(digimonImageView)
