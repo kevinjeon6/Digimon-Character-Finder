@@ -77,10 +77,10 @@ class FavoriteCell: UITableViewCell {
 
     
     private func setupFavoritesUI() {
-        self.contentView.addSubview(digimonImageView)
-        self.contentView.addSubview(digimonTitleLabel)
-        self.contentView.addSubview(digimonLevelLabel)
-        
+        for v in [digimonImageView, digimonTitleLabel, digimonLevelLabel] {
+            v.translatesAutoresizingMaskIntoConstraints = false
+            self.contentView.addSubview(v)
+        }
         
         NSLayoutConstraint.activate([
             digimonImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
