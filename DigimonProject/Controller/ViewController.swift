@@ -119,8 +119,9 @@ class ViewController: UIViewController {
         //isSelected is defaulted as NO. ! reverses the condition. Meaning that sender.isSelected is true
 //        sender.isSelected = !sender.isSelected //Toggle the button state
         
-        guard let cell = sender.superview?.superview as? DigimonCell,
-              let indexPath = tableView.indexPath(for: cell) else {
+        let row = sender.tag
+        let indexPath = IndexPath(row: row, section: 0)
+        guard let cell = tableView.cellForRow(at: indexPath) as? DigimonCell else {
             return
         }
         
@@ -129,11 +130,11 @@ class ViewController: UIViewController {
         let saveError = PersistenceManager.updateWith(favorite: digimon, actionType: .add)
         switch saveError {
         case .none:
-            break
+            print("✅ persisted favorite digimon \(digimon.name)")
             //Add alert to notify user that they favorited the digimon
         case .some(let error):
-           break
-            //Add alert if there was an error 
+            print("❌ failed to persist favorite \(digimon.name), error: \(error)")
+            //Add alert if there was an error
         }
     }
     
@@ -167,6 +168,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.set(digimon: digimon)
 
         let favoriteAddButton = UIButton(type: .custom)
+        favoriteAddButton.tag = indexPath.row
         favoriteAddButton.setImage(UIImage(systemName: "plus"), for: .normal)
         favoriteAddButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         favoriteAddButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)

@@ -54,7 +54,10 @@ class FavoriteCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    override func prepareForReuse() {
+        digimonImageView.image = UIImage(systemName: "x.circle")
+    }
+
     // convert the URL string to an actual image object and set it to the UIImageView instance in the cell.
     func setFave(favorite: Digimon) {
         digimonTitleLabel.text = favorite.name
@@ -63,24 +66,29 @@ class FavoriteCell: UITableViewCell {
         
         guard let imageUrl = URL(string: favorite.img) else { return }
         
+        imageContext += 1
+        let startingContext = imageContext
         DispatchQueue.global().async {
             if let imageData = try? Data(contentsOf: imageUrl) {
                 let image = UIImage(data: imageData)
-                
-                DispatchQueue.main.async {
-                    self.digimonImageView.image = image
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    let currentContext = self.imageContext
+                    if currentContext == startingContext {
+                        self.digimonImageView.image = image
+                    }
                 }
             }
         }
     }
     
-
+    private var imageContext: Int = 0
     
     private func setupFavoritesUI() {
-        self.contentView.addSubview(digimonImageView)
-        self.contentView.addSubview(digimonTitleLabel)
-        self.contentView.addSubview(digimonLevelLabel)
-        
+        for v in [digimonImageView, digimonTitleLabel, digimonLevelLabel] {
+            v.translatesAutoresizingMaskIntoConstraints = false
+            self.contentView.addSubview(v)
+        }
         
         NSLayoutConstraint.activate([
             digimonImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),

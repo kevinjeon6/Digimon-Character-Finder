@@ -21,6 +21,8 @@ class FavoritesListViewController: UIViewController {
         return tableView
     }()
 
+    private let emptyView = EmptyView(message: "You do not have any favorites yet")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +32,15 @@ class FavoritesListViewController: UIViewController {
         configFavoritesTableView()
         configNavBar()
         
+        emptyView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(emptyView)
+        NSLayoutConstraint.activate([
+            emptyView.topAnchor.constraint(equalTo: view.topAnchor),
+            emptyView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            emptyView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            emptyView.rightAnchor.constraint(equalTo: view.rightAnchor),
+        ])
+        emptyView.isHidden = true
     }
     
     
@@ -73,16 +84,17 @@ class FavoritesListViewController: UIViewController {
         switch results {
         case .success(let favorites):
             if favorites.isEmpty {
-            self.showEmptyView(with: "You do not have any favorites yet", in: self.view)
+                emptyView.isHidden = false
             } else {
+                emptyView.isHidden = true
                 self.favorites = favorites
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                     self.view.bringSubviewToFront(self.tableView)
                 }
             }
-        case .failure:
-            break
+        case .failure(let error):
+            print("❌ getFavorites failed, error: \(error)")
         }
     }
 }
