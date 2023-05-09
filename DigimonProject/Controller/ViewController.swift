@@ -7,6 +7,8 @@
 
 import UIKit
 
+//UIViewController contains a content view
+
 class ViewController: UIViewController {
 
     
@@ -23,8 +25,6 @@ class ViewController: UIViewController {
     private let searchController = UISearchController(searchResultsController: nil)
     
     
-    
-    
     //Create DigimonViewModel object/instance and assign it to the variable viewModel
     var viewModel = DigimonViewModel()
 
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         //Need to explicitly tell the view to update when this fetching of data is finished. To do this we can use a delegate. Deletgates allows us to communicate between objects and delegate tasks. In this case from from our ViewModel to the view controller.
         //Setting the delegate property of the view model to the ViewController
         viewModel.delegate = self
-        //Get the articles from the view model
+        //Get the data from the view model
         viewModel.getDigimonData()
         configureTableView()
         setTableViewDelegates()
@@ -56,12 +56,12 @@ class ViewController: UIViewController {
     func configureTableView() {
         //View is the main view of the view controller
         view.addSubview(tableView)
+        tableView.frame = view.bounds
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         
         //Setting up the constraints for the tableview in the View
         NSLayoutConstraint.activate([
-            //
             tableView.topAnchor.constraint(equalTo: view.topAnchor), //A layout anchor representing the top edge of the view’s frame.
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor), //A layout anchor representing the bottom edge of the view’s frame.
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor), //A layout anchor representing the leading edge of the view’s frame.
@@ -114,21 +114,30 @@ class ViewController: UIViewController {
     
     // MARK: - Selectors
     
-    @objc func showSearch() {
-        //Do stuff for search bar
-        print("searching for characters")
+    
+    @objc func favoriteButtonTapped(sender: UIButton) {
+        //isSelected is defaulted as NO. ! reverses the condition. Meaning that sender.isSelected is true
+//        sender.isSelected = !sender.isSelected //Toggle the button state
+        
+        guard let cell = sender.superview?.superview as? DigimonCell,
+              let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
+        
+        let digimon = viewModel.characters[indexPath.row]
+   
+        let saveError = PersistenceManager.updateWith(favorite: digimon, actionType: .add)
+        switch saveError {
+        case .none:
+            break
+            //Add alert to notify user that they favorited the digimon
+        case .some(let error):
+           break
+            //Add alert if there was an error 
+        }
     }
     
-    @objc func addTapped() {
-        //Do stuff to add to favorites
-        print("Add to favorites")
-    }
-    
-    @objc func markAsFavorite(cell: UITableViewCell) {
-        print("This is my favorite Digimon")
 
-    }
-    
 }
 
 
@@ -155,7 +164,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DigimonCell.identifier, for: indexPath) as? DigimonCell else { fatalError("tableview could not dequeue digimoncell in viewcontroller")}
         let inSearchMode = viewModel.inSearchMode(searchController)
         let digimon = inSearchMode ? viewModel.filteredDigimon[indexPath.row] : viewModel.characters[indexPath.row]
-        cell.set(imageUrlString: digimon.img, label: digimon.name, level: digimon.level)
+        cell.set(digimon: digimon)
+
+        let favoriteAddButton = UIButton(type: .custom)
+        favoriteAddButton.setImage(UIImage(systemName: "plus"), for: .normal)
+        favoriteAddButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        favoriteAddButton.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
+        cell.accessoryView = favoriteAddButton
+        
 
         return cell
     }
