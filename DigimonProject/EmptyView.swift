@@ -28,7 +28,7 @@ class EmptyView: UIView {
         let logoImage = UIImageView()
         logoImage.image = UIImage(named: "digimon-logo")
         logoImage.translatesAutoresizingMaskIntoConstraints = false
-  
+        return logoImage
         
     }()
     
