@@ -25,6 +25,7 @@
 		74B8CD6329EB40B500F0AD40 /*  DigimonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B8CD6229EB40B500F0AD40 /*  DigimonViewModel.swift */; };
 		74E269E12A0ADC8400F8ACAB /* AlertTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E269E02A0ADC8400F8ACAB /* AlertTitleLabel.swift */; };
 		74E269E32A0ADE4100F8ACAB /* AlertBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E269E22A0ADE4100F8ACAB /* AlertBodyLabel.swift */; };
+		74E269E52A0AE05100F8ACAB /* AlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E269E42A0AE05100F8ACAB /* AlertButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		74B8CD6229EB40B500F0AD40 /*  DigimonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " DigimonViewModel.swift"; sourceTree = "<group>"; };
 		74E269E02A0ADC8400F8ACAB /* AlertTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTitleLabel.swift; sourceTree = "<group>"; };
 		74E269E22A0ADE4100F8ACAB /* AlertBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBodyLabel.swift; sourceTree = "<group>"; };
+		74E269E42A0AE05100F8ACAB /* AlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 				74E269E12A0ADC8400F8ACAB /* AlertTitleLabel.swift in Sources */,
 				74B8CD4C29EB35E600F0AD40 /* SceneDelegate.swift in Sources */,
 				748EBDC02A070DCB007ADE7F /* FavoriteError.swift in Sources */,
+				74E269E52A0AE05100F8ACAB /* AlertButton.swift in Sources */,
 				7450F1C829FDB6D10019638D /* FavoriteCell.swift in Sources */,
 				74AC6F5529ECC06000E8F9D6 /* DigimonCell.swift in Sources */,
 				74B8CD6129EB3E0500F0AD40 /* Digimon.swift in Sources */,
