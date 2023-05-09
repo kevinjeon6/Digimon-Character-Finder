@@ -43,40 +43,8 @@ class DigimonCell: UITableViewCell {
         return label
     }()
     
-    //Making a star button to favorite a Digimon. Can be placed in cellForRowAt or in the Cell
-//    private var starButton: UIButton = {
-//
-//
-//        let starButton = UIButton(type: .custom)
-//        starButton.setImage(UIImage(systemName: "star"), for: .normal)
-//        starButton.setImage(UIImage(systemName: "star.fill")?.withTintColor(.orange, renderingMode: .alwaysOriginal), for: .selected)
-//        starButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-//        starButton.addTarget(self, action: #selector(markAsFavorite), for: .touchUpInside)
-//        return starButton
-//    }()
+   
 
-//    @objc func markAsFavorite(sender: UIButton) {
-//
-//        //isSelected is defaulted as NO. ! reverses the condition. Meaning that sender.isSelected is true
-//        sender.isSelected = !sender.isSelected //Toggle the button state
-//        print("This is my favorite Digimon")
-//        addDigimonToFavorites(digimon: )
-//
-//
-//    }
-//
-//    func addDigimonToFavorites(digimon: Digimon) {
-//        //Need to append to the empty favorites
-//        var favorites = Digimon(name: digimon.name, img: digimon.img, level: digimon.level)
-//
-//        PersistenceManager.updateWith(favorite: favorites, actionType: .add) {
-//            [weak self] error in
-//            guard let self = self { return }
-//
-//
-//        }
-//    }
-    
    
     // MARK: - Init
     
@@ -109,6 +77,7 @@ class DigimonCell: UITableViewCell {
         
         guard let imageUrl = URL(string: digimon.img) else { return }
         
+        //Got help with cell reuse bug. Where each cell updates its image if scolling all the way to the bottom and stop.
         imageContext += 1
         let startingContext = imageContext
         DispatchQueue.global().async {

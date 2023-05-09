@@ -15,7 +15,6 @@ class FavoriteCell: UITableViewCell {
     private var digimonImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(systemName: "x.circle") //If failed to set imageView then it'll have a x with circle
         imageView.tintColor = .systemRed
         return imageView
     }()
@@ -55,7 +54,7 @@ class FavoriteCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        digimonImageView.image = UIImage(systemName: "x.circle")
+        digimonImageView.image = UIImage(systemName: "x.circle") //If failed to set imageView then it'll have a x with circle
     }
 
     // convert the URL string to an actual image object and set it to the UIImageView instance in the cell.

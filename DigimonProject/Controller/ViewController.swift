@@ -119,6 +119,8 @@ class ViewController: UIViewController {
         //isSelected is defaulted as NO. ! reverses the condition. Meaning that sender.isSelected is true
 //        sender.isSelected = !sender.isSelected //Toggle the button state
         
+        
+        //Can use the tag to store the index path on each favorites button
         let row = sender.tag
         let indexPath = IndexPath(row: row, section: 0)
         guard let cell = tableView.cellForRow(at: indexPath) as? DigimonCell else {
@@ -167,6 +169,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let digimon = inSearchMode ? viewModel.filteredDigimon[indexPath.row] : viewModel.characters[indexPath.row]
         cell.set(digimon: digimon)
 
+        
+        //Making a button to favorite a Digimon. Can be placed in cellForRowAt or in the Cell
         let favoriteAddButton = UIButton(type: .custom)
         favoriteAddButton.tag = indexPath.row
         favoriteAddButton.setImage(UIImage(systemName: "plus"), for: .normal)
