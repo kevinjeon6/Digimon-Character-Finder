@@ -124,7 +124,7 @@ extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSourc
             tableView.deleteRows(at: [indexPath], with: .left)
             
             if favorites.isEmpty {
-                showEmptyView(with: "No favorite digimon added yet", in: self.view)
+                showEmptyView(with: "You do not have any favorite Digimon added yet.\nFind your favorite Digimon!", in: view)
             }
         }
     }

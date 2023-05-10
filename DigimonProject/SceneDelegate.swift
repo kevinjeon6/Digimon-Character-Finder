@@ -28,7 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     
     func createSearchNavigationController() -> UINavigationController {
-        let vc = ViewController()
+        let vc = DigmonCharacterViewController()
         vc.tabBarItem = UITabBarItem(title: "Digimon", image: UIImage(systemName: "list.dash"), tag: 0)
         
         //Put are ViewController within a UI navigation controller. Will be able to put your view inside of as a contain and add buttons and navbar, etc.

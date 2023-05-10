@@ -9,7 +9,7 @@ import UIKit
 
 //UIViewController contains a content view
 
-class ViewController: UIViewController {
+class DigmonCharacterViewController: UIViewController {
 
     
     // MARK: - Properties
@@ -132,10 +132,10 @@ class ViewController: UIViewController {
         let saveError = PersistenceManager.updateWith(favorite: digimon, actionType: .add)
         switch saveError {
         case .none:
-            print("✅ persisted favorite digimon \(digimon.name)")
+            presentAlertOnMainThread(title: "Digimon Added", message: "You favorited \(digimon.name)👍", buttonTitle: "Done")
             //Add alert to notify user that they favorited the digimon
         case .some(let error):
-            print("❌ failed to persist favorite \(digimon.name), error: \(error)")
+            presentAlertOnMainThread(title: "Digimon in favorites", message: "You already favorited \(digimon.name)", buttonTitle: "Done")
             //Add alert if there was an error
         }
     }
@@ -150,7 +150,7 @@ class ViewController: UIViewController {
 
 // MARK: - Extension for TableView delegate and data source
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension DigmonCharacterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //How many rows do I want to show
         let inSearchMode = viewModel.inSearchMode(searchController)
@@ -191,7 +191,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 // MARK: - Extension for ViewController to conform to DigimonViewModelProtocol
-extension ViewController: DigimonViewModelProtocol {
+extension DigmonCharacterViewController: DigimonViewModelProtocol {
     // MARK: - Digimon View Model Protocol Methods
     func didFinish() {
         print("Digimon data is returned from view model")
@@ -209,7 +209,7 @@ extension ViewController: DigimonViewModelProtocol {
 
 // MARK: - Extension for Search Controller Functions
 //UISearchResults updates the search results based on the input into the search bar
-extension ViewController: UISearchResultsUpdating {
+extension DigmonCharacterViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         self.viewModel.updateSearchController(searchBarText: searchController.searchBar.text)
         
