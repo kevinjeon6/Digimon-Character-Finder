@@ -28,7 +28,7 @@ class AlertButton: UIButton {
     // MARK: - Set up UI
     private func configureButton() {
         layer.cornerRadius = 10
-        titleLabel?.textColor = .white
+        setTitleColor(.white, for: .normal) //Correct way to change the title color
         titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
         translatesAutoresizingMaskIntoConstraints = false
     }
