@@ -116,9 +116,6 @@ class DigmonCharacterViewController: UIViewController {
     
     
     @objc func favoriteButtonTapped(sender: UIButton) {
-        //isSelected is defaulted as NO. ! reverses the condition. Meaning that sender.isSelected is true
-//        sender.isSelected = !sender.isSelected //Toggle the button state
-        
         
         //Can use the tag to store the index path on each favorites button
         let row = sender.tag

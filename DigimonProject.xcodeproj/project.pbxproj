@@ -68,8 +68,8 @@
 		7450F1C029FA0CDF0019638D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				74331F1329F5E37900411EC0 /* Extensions.swift */,
 				748EBDC52A086249007ADE7F /* UIViewController-Ext.swift */,
+				74331F1329F5E37900411EC0 /* Extensions.swift */,
 				748EBDBF2A070DCB007ADE7F /* FavoriteError.swift */,
 			);
 			path = Helpers;

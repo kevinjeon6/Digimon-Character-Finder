@@ -83,7 +83,7 @@ class FavoritesListViewController: UIViewController {
                 }
             }
         case .failure(let error):
-            print("❌ getFavorites failed, error: \(error)")
+            presentAlertOnMainThread(title: "Error", message: "Get favorites failed.\n\(error)", buttonTitle: "Ok")
         }
     }
 }
@@ -118,7 +118,7 @@ extension FavoritesListViewController: UITableViewDelegate, UITableViewDataSourc
         let savingError = PersistenceManager.updateWith(favorite: deleteFavorite, actionType: .remove)
         if let savingError {
             //Add an alert here. Unable to remove
-            return
+            presentAlertOnMainThread(title: "Error", message: "There was an error. Unable to remove", buttonTitle: "Ok")
         } else {
             favorites.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .left)
