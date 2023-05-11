@@ -18,19 +18,22 @@ class AlertButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(backgroundColor: UIColor, title: String) {
-        super.init(frame: .zero)
-        self.backgroundColor = backgroundColor
-        self.setTitle(title, for: .normal)
-        configureButton()
+    convenience init(backgroundColor: UIColor, title: String) {
+        self.init(frame: .zero)
+        set(color: backgroundColor, title: title)
+   
     }
     
     // MARK: - Set up UI
     private func configureButton() {
-        layer.cornerRadius = 10
-        setTitleColor(.white, for: .normal) //Correct way to change the title color
-        titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
+        configuration = .filled()
+        configuration?.cornerStyle = .medium
         translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    final func set(color: UIColor, title: String) {
+        configuration?.baseBackgroundColor = color
+        configuration?.title = title
     }
     
     
