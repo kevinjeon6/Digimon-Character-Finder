@@ -124,7 +124,8 @@ class DigmonCharacterViewController: UIViewController {
             return
         }
         
-        let digimon = viewModel.characters[indexPath.row]
+        let inSearchMode = viewModel.inSearchMode(searchController)
+        let digimon = inSearchMode ? viewModel.filteredDigimon[indexPath.row] : viewModel.characters[indexPath.row]
    
         let saveError = PersistenceManager.updateWith(favorite: digimon, actionType: .add)
         switch saveError {
