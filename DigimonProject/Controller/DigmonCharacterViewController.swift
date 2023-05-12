@@ -102,7 +102,7 @@ class DigmonCharacterViewController: UIViewController {
         //This is what will be displayed in the search bar
         self.searchController.searchBar.placeholder = "Search Digimon"
         //The color of the background of the textfield
-        self.searchController.searchBar.searchTextField.backgroundColor = .white
+        self.searchController.searchBar.searchTextField.backgroundColor = .systemBackground
         self.navigationItem.searchController = searchController
         self.definesPresentationContext = false
         self.navigationItem.hidesSearchBarWhenScrolling = false
