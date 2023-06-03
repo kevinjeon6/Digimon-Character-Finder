@@ -91,38 +91,27 @@ class DigmonCharacterViewController: UIViewController {
         navigationController?.navigationBar.barStyle = .black //bar style gives us the white status bar/white text look
         navigationController?.navigationBar.isTranslucent = false
         navigationItem.title = "Digimon"
-        
-
-        navigationItem.rightBarButtonItem =  UIBarButtonItem(title: "", image: UIImage(systemName: "line.3.horizontal.decrease.circle"), target: self, action: nil, menu: filterLevel())
+        navigationItem.rightBarButtonItem =  UIBarButtonItem(title: nil, image: UIImage(systemName: "line.3.horizontal.decrease.circle"), target: self, action: nil, menu: filterLevel())
 
     }
     
-    
+  
+    var selectedLevel: LevelType = .all
     @objc func filterLevel() -> UIMenu {
         //
-        let addMenuItem = UIMenu(title: "", options: .displayInline, children: [
-            
-            UIAction(title: "All", state: .on, handler: { _ in
-                print("All selected")
-            }),
-            
-            UIAction(title: "Rookie", state: .off, handler: { _ in
-                print("Rookie selected")
-            }),
-            
-            UIAction(title: "Champion", state: .off, handler: { _ in
-                print("Champion selected")
-            }),
-            
-            UIAction(title: "Ultimate", state: .off, handler: { _ in
-                print("Ultimate selected")
-            }),
-            
-            UIAction(title: "Mega", state: .off, handler: { _ in
-                print("Mega selected")
-            }),
-            
-        ])
+        let digiLevel = LevelType.allCases
+        let children = digiLevel.map { level in
+            UIAction(title: level.levelName, state: level == selectedLevel ? .on : .off , handler: { [self]  _ in
+                print("\(level.levelName) selected")
+                selectedLevel = level
+                viewModel.characters = viewModel.characters.filter({$0.level == level.levelName})
+                print("\(level.levelName)")
+                    self.tableView.reloadData()
+                //BUG ISSUE: TableView is not reloading after switching options
+            })
+        }
+        
+        let addMenuItem = UIMenu(title: "", options: .singleSelection, children: children)
         
         return addMenuItem
     }
