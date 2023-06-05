@@ -75,7 +75,7 @@ class EmptyView: UIView {
     private func configureLogoImage() {
         NSLayoutConstraint.activate([
             logoImageView.widthAnchor.constraint(equalToConstant: 270),
-            logoImageView.heightAnchor.constraint(equalToConstant: 200),
+            logoImageView.heightAnchor.constraint(equalToConstant: 150),
             logoImageView.topAnchor.constraint(equalTo: emptyTitleText.bottomAnchor),
             logoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
         ])
