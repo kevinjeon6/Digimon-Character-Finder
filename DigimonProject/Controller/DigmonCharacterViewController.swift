@@ -28,6 +28,18 @@ class DigmonCharacterViewController: UIViewController {
     //Create DigimonViewModel object/instance and assign it to the variable viewModel
     var viewModel = DigimonViewModel()
 
+    var currentCharacters: [Digimon] {
+        let isInSearchMode = viewModel.inSearchMode(searchController)
+        if isInSearchMode {
+            return viewModel.filteredDigimon
+        } else {
+            if selectedLevel == .all {
+                return viewModel.characters
+            } else {
+                return viewModel.characters.filter({ $0.level == selectedLevel.levelName })
+            }
+        }
+    }
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -104,9 +116,8 @@ class DigmonCharacterViewController: UIViewController {
             UIAction(title: level.levelName, state: level == selectedLevel ? .on : .off , handler: { [self]  _ in
                 print("\(level.levelName) selected")
                 selectedLevel = level
-                viewModel.characters = viewModel.characters.filter({$0.level == level.levelName})
                 print("\(level.levelName)")
-                    self.tableView.reloadData()
+                self.tableView.reloadData()
                 //BUG ISSUE: TableView is not reloading after switching options
             })
         }
@@ -173,21 +184,14 @@ class DigmonCharacterViewController: UIViewController {
 
 extension DigmonCharacterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //How many rows do I want to show
-        let inSearchMode = viewModel.inSearchMode(searchController)
-        
-        
-        //Ternary operator. WTF - What is the condition ? True : False
-        return inSearchMode ? viewModel.filteredDigimon.count : viewModel.characters.count
-        
+        return currentCharacters.count
     }
     
     
     //for cellForRowAt is where we choose which class we want to use. Set up configuration like images, etc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DigimonCell.identifier, for: indexPath) as? DigimonCell else { fatalError("tableview could not dequeue digimoncell in viewcontroller")}
-        let inSearchMode = viewModel.inSearchMode(searchController)
-        let digimon = inSearchMode ? viewModel.filteredDigimon[indexPath.row] : viewModel.characters[indexPath.row]
+        let digimon = currentCharacters[indexPath.row]
         cell.set(digimon: digimon)
 
         
